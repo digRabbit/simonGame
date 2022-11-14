@@ -1,0 +1,56 @@
+body {
+  background-color: #011f3f !important;
+  font-family: "VT323", monospace !important;
+  color: #fef2bf !important;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
+  background-color: red;
+  display: inline-block;
+  position: relative;
+  left: 30%;
+  color: black;
+}
+#level-header {
+}
+
+.big-header {
+  font-size: 5rem;
+}
+
+.soft-box {
+  width: 250px;
+  height: 250px;
+  border-radius: 25%;
+  border: 10px solid black;
+  margin: auto;
+  display: inline-block;
+}
+
+.green {
+  background-color: green !important;
+}
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.blue {
+  background-color: blue;
+}
+
+#game .container {
+  max-width: 30%;
+  margin-top: 5%;
+}
+
+#game .col-6 {
+  margin-bottom: 7%;
+}
+
+.hidden {
+  visibility: hidden;
+}
