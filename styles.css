@@ -1,9 +1,9 @@
+/* Tags */
 body {
   background-color: #011f3f !important;
   font-family: "VT323", monospace !important;
   color: #fef2bf !important;
 }
-
 h2 {
   text-align: center;
   margin: auto;
@@ -13,22 +13,19 @@ h2 {
   left: 30%;
   color: black;
 }
-#level-header {
-}
-
+/*  */
+/* Classes */
 .big-header {
   font-size: 5rem;
 }
-
 .soft-box {
-  width: 250px;
-  height: 250px;
+  width: 75%;
+  height: 200px;
   border-radius: 25%;
   border: 10px solid black;
   margin: auto;
   display: inline-block;
 }
-
 .green {
   background-color: green !important;
 }
@@ -41,16 +38,16 @@ h2 {
 .blue {
   background-color: blue;
 }
-
+.hidden {
+  visibility: hidden;
+}
+/*  */
+/* Ids */
 #game .container {
   max-width: 30%;
   margin-top: 5%;
 }
-
 #game .col-6 {
   margin-bottom: 7%;
 }
-
-.hidden {
-  visibility: hidden;
-}
+/*  */

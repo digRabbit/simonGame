@@ -1,9 +1,9 @@
+// Variables
 let gameStarted = false
 let boxList = $(".soft-box")
 let order = []
 let step = 0
 let level = 1
-let maxStep = 1
 
 let main = () => {
   $(document).keydown(function () {
@@ -11,16 +11,32 @@ let main = () => {
   })
 }
 
-// this function will only be called at the start of the game.
+// Starts the game
 function startGame() {
   if (gameStarted) return
   changeLevelUI()
   gameStarted = true
   $("h1").text("Level 1")
+  nextBox()
+  startListening()
+}
+
+// Adjusts UI
+function changeLevelUI() {
+  $("h1").text(`Level ${level}`)
+  $("h2").text(`${step}/${level}`)
+}
+
+// Selects and winks the next box
+function nextBox() {
   setTimeout(() => {
     winkBox(selectRandomBox())
   }, 1000)
-  startListening()
+}
+
+// animate given box to wink
+function winkBox(box) {
+  box.animate({ opacity: 0 }, 100)
 }
 
 // selects a random box, pushes it to order array and returns the selected box object
@@ -30,47 +46,37 @@ function selectRandomBox() {
   return boxList[randomNumber]
 }
 
-// animate given box to wink
-function winkBox(box) {
-  box.animate({ opacity: 0 }, 100)
-}
-
-function nextLevel() {
-  step = 0
-  level++
-  maxStep++
-  console.log("next level triggered")
-  changeLevelUI()
-  setTimeout(() => {
-    winkBox(selectRandomBox())
-  }, 1000)
-}
-
-function gameOver() {
-  console.log("Failed")
-  boxList.off()
-  $("h2").addClass("hidden")
-  $("h1").text(`YOU FAILED MISERABLY`)
-}
-
-function changeLevelUI() {
-  $("h1").text(`Level ${level}`)
-  $("h2").text(`${step}/${maxStep}`)
-}
-
 function startListening() {
   boxList.click((e) => {
-    maxStep = level
+    boxClick(e.target)
     if (e.target.classList[1] == order[step]) {
       step++
       changeLevelUI()
     } else {
       gameOver()
     }
-    if (step == maxStep) {
+    if (step == level) {
       nextLevel()
     }
   })
+}
+
+function nextLevel() {
+  step = 0
+  level++
+  changeLevelUI()
+  nextBox()
+}
+
+//changes the opacity to simulate click
+function boxClick(box) {
+  box.animate({ opacity: 0.5 }, 100)
+}
+
+function gameOver() {
+  boxList.off()
+  $("h2").addClass("hidden")
+  $("h1").text(`YOU FAILED MISERABLY`)
 }
 
 main()
